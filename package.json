@@ -1,0 +1,107 @@
+{
+  "name": "github-action-open-jscharts",
+  "version": "0.0.0-dev",
+  "description": "Automatically provides SVG (Scalable Vector Graphics) chart images based on popularity of open JavaScript libraries",
+  "main": "index.js",
+  "license": "GPL-3.0",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write **/*.js",
+    "format:check": "prettier --check **/*.js",
+    "prepublish": "node_modules/.bin/ncc build index.js -m -o dist",
+    "postpublish": "npm run clean",
+    "lint:editorconfig": "editorconfig-checker -exclude \\.yml$",
+    "start:action": "npm run prepublish && node dist/index.js",
+    "lint": "eslint --cache --fix --quiet --format codeframe --ext js .",
+    "lint:staged": "lint-staged --no-stash --allow-empty",
+    "semantic-release": "semantic-release",
+    "commit": "git-cz",
+    "test:folio": "folio tests/spec/",
+    "test": "TZ=utc jest",
+    "test:coverage": "jest --collectCoverage",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.6"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.2.0",
+    "@semantic-release/npm": "^7.0.10",
+    "@semantic-release/release-notes-generator": "^9.0.1",
+    "@vercel/ncc": "~>0.27.0",
+    "babel-eslint": "^10.1.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "editorconfig-checker": "3.3.0",
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-github": "^4.1.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^23.20.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "expect": "^26.6.2",
+    "folio": "^0.3.18",
+    "git-cz": "^4.1.0",
+    "husky": "^4.2.5",
+    "jest": "^27.0.0-next.2",
+    "jest-circus": "^26.6.3",
+    "lint-staged": "^10.1.6",
+    "pretty-quick": "^3.1.0",
+    "semantic-release": "^15.10.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexRogalskiy/github-action-open-jscharts.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">= 8.0.0"
+  },
+  "keywords": [
+    "github-actions",
+    "styled open js-charts",
+    "javascript"
+  ],
+  "release": {
+    "tagFormat": "v${version}",
+    "plugins": [
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false,
+          "tarballDir": "dist",
+          "allowSameVersion": true
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "assets": "dist/*.tgz"
+        }
+      ]
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/AlexRogalskiy/github-action-open-jscharts/issues"
+  },
+  "homepage": "https://github.com/AlexRogalskiy/github-action-open-jscharts",
+  "author": {
+    "name": "Alexander Rogalskiy",
+    "url": "https://github.com/AlexRogalskiy"
+  },
+  "browser": {
+    "fs": false
+  },
+  "funding": "https://github.com/sponsors/AlexRogalskiy",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
