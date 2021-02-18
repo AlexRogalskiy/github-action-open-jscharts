@@ -35,6 +35,27 @@
 ## _Table of contents_
 
 <!--ts-->
+   * [<em>Styled Open JS-charts</em>](#styled-open-js-charts)
+      * [<em>Table of contents</em>](#table-of-contents)
+      * [<em>Description</em>](#description)
+      * [<em>Inputs</em>](#inputs)
+         * [url](#url)
+         * [name](#name)
+         * [path](#path)
+         * [extension](#extension)
+         * [width](#width)
+         * [height](#height)
+      * [<em>Outputs</em>](#outputs)
+         * [image](#image)
+      * [<em>Examples</em>](#examples)
+      * [<em>Visitor stats</em>](#visitor-stats)
+      * [<em>Licensing</em>](#licensing)
+      * [<em>Authors</em>](#authors)
+      * [<em>Versioning</em>](#versioning)
+      * [<em>Contribution</em>](#contribution)
+      * [<em>Acknowledgement</em>](#acknowledgement)
+      * [<em>Forks</em>](#forks)
+      * [<em>Development Support</em>](#development-support)
 <!--te-->
 
 ## _Description_
