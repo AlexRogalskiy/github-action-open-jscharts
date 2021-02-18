@@ -35,27 +35,14 @@
 ## _Table of contents_
 
 <!--ts-->
-   * [<em>Styled Open JS-charts</em>](#styled-open-js-charts)
-      * [<em>Table of contents</em>](#table-of-contents)
-      * [<em>Description</em>](#description)
-      * [<em>Inputs</em>](#inputs)
-         * [url](#url)
-         * [name](#name)
-         * [path](#path)
-         * [extension](#extension)
-         * [width](#width)
-         * [height](#height)
-      * [<em>Outputs</em>](#outputs)
-         * [image](#image)
-      * [<em>Examples</em>](#examples)
-      * [<em>Visitor stats</em>](#visitor-stats)
-      * [<em>Licensing</em>](#licensing)
-      * [<em>Authors</em>](#authors)
-      * [<em>Versioning</em>](#versioning)
-      * [<em>Contribution</em>](#contribution)
-      * [<em>Acknowledgement</em>](#acknowledgement)
-      * [<em>Forks</em>](#forks)
-      * [<em>Development Support</em>](#development-support)
+
+- [<em>Styled Open JS-charts</em>](#styled-open-js-charts) _ [<em>Table of contents</em>](#table-of-contents)
+_ [<em>Description</em>](#description) _ [<em>Inputs</em>](#inputs) _ [url](#url) _ [name](#name) _
+[path](#path) _ [extension](#extension) _ [width](#width) _ [height](#height) _ [<em>Outputs</em>](#outputs) _
+[image](#image) _ [<em>Examples</em>](#examples) _ [<em>Visitor stats</em>](#visitor-stats) _
+[<em>Licensing</em>](#licensing) _ [<em>Authors</em>](#authors) _ [<em>Versioning</em>](#versioning) _
+[<em>Contribution</em>](#contribution) _ [<em>Acknowledgement</em>](#acknowledgement) _
+[<em>Forks</em>](#forks) _ [<em>Development Support</em>](#development-support)
 <!--te-->
 
 ## _Description_
@@ -183,7 +170,7 @@ See also the list of [contributors][contributors] who participated in this proje
 
 ## _Development Support_
 
-Like _**Styled Code Formats**_ ? Consider buying me a coffee :\)
+Like _**Styled Open JS-charts**_ ? Consider buying me a coffee :\)
 
 [![Become a Patron](https://img.shields.io/badge/Become_Patron-Support_me_on_Patreon-blue.svg?style=flat-square&logo=patreon&color=e64413)](https://www.patreon.com/alexrogalskiy)
 [![Buy Me A Coffee](https://img.shields.io/badge/Donate-Buy%20me%20a%20coffee-yellow.svg?logo=buy%20me%20a%20coffee)](https://www.buymeacoffee.com/AlexRogalskiy)
