@@ -1,7 +1,7 @@
 'use strict';
 
 const core = require('@actions/core');
-const fetch = require('isomorphic-fetch');
+const fetch = require('unfetch');
 const path = require('path');
 const http = require('https');
 const fs = require('fs');
