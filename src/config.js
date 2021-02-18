@@ -1,7 +1,10 @@
 'use strict';
 
 const CONFIG = {
-  url: 'https://bestofjs-static-api.vercel.app/projects.json',
+  routes: {
+    get_projects: 'https://bestofjs-static-api.vercel.app/projects.json',
+    get_weekly_newsletter: 'https://bestofjs-static-api.vercel.app/latest/routeInfo.json',
+  },
   name: 'open-jschart',
   path: 'images',
   extension: 'svg',

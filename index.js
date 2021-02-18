@@ -20,7 +20,7 @@ async function getPlots(input) {
   const json = await data.json();
 
   return {
-    options: json.files.map(function (o) {
+    options: json.files.map(o => {
       return {
         label: `${o.filename} by ${o.owner}, ${o.views} views`,
         value: `${o.web_url.replace(/\/$/, '')}.json`,
@@ -29,15 +29,27 @@ async function getPlots(input) {
   };
 }
 
-async function getMocks() {
-  const data = await fetch('https://api.github.com/repositories/45646037/contents/test/image/mocks');
+async function getTagsByCode(tags) {
+  return tags.reduce((acc, tag) => {
+    return { ...acc, [tag.code]: { ...tag, id: tag.code } };
+  }, {});
+}
+
+async function getData(url) {
+  const data = await fetch(url);
   const json = await data.json();
   return {
-    complete: true,
-    options: json.map(function (o) {
+    options: json.map(o => {
       return {
         label: o.name,
-        value: o.download_url,
+        name: o.full_name,
+        description: o.description,
+        stars: o.stars,
+        trends: o.trends,
+        url: o.url,
+        npm: o.npm,
+        icon: o.icon,
+        downloads: o.downloads,
       };
     }),
   };
@@ -72,11 +84,13 @@ async function run() {
   const filePath = notBlankOrElse(core.getInput('path'), config.path);
   const fileExtension = notBlankOrElse(core.getInput('extension'), config.extension);
 
-  const target = `${config.url}?url=${url}&width=${width}&height=${height}`;
+  const data = getData(config.routes.get_weekly_newsletter);
 
-  const imagePath = await createData(target, filePath, fileName, fileExtension);
+  //const target = `${config.url}?url=${url}&width=${width}&height=${height}`;
 
-  core.setOutput('image', imagePath);
+  //const imagePath = await createData(target, filePath, fileName, fileExtension);
+
+  //core.setOutput('image', imagePath);
 }
 
 module.exports = run;
