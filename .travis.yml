@@ -38,5 +38,10 @@ jobs:
 
 after_success: bash <(curl -s https://codecov.io/bash)
 
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
+
 cache:
-  directories: node_modules
+  directories:
+    - node_modules

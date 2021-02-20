@@ -20,14 +20,14 @@ commands:
           command: node -v
       - restore_cache:
           name: Restore node_modules cache
-          key: github-action-open-jscharts-{{ checksum "package-lock.json" }}-{{ .Branch }}
+          key: github-action-open-jscharts-{{ checksum "package.json" }}-{{ .Branch }}
 
   save_env_cache:
     description: Saves environment cache
     steps:
       - save_cache:
           name: Save node_modules cache
-          key: github-action-open-jscharts-{{ checksum "package-lock.json" }}-{{ .Branch }}
+          key: github-action-open-jscharts-{{ checksum "package.json" }}-{{ .Branch }}
           paths:
             - node_modules/
 
