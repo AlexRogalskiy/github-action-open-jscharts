@@ -1,17 +1,17 @@
 {
   "name": "github-action-open-jscharts",
   "version": "0.0.0-dev",
-  "description": "Automatically provides SVG (Scalable Vector Graphics) chart images based on popularity of open JavaScript libraries",
+  "description": "Automatically provides SVG (Scalable Vector Graphics) chart images based on open JavaScript libraries statistics",
   "main": "index.js",
   "license": "GPL-3.0",
   "private": true,
   "scripts": {
     "format": "prettier --write **/*.js",
     "format:check": "prettier --check **/*.js",
-    "prepublish": "node_modules/.bin/ncc build index.js -m -o dist",
+    "prepare": "node_modules/.bin/ncc build index.js -m -o dist",
     "postpublish": "npm run clean",
     "lint:editorconfig": "editorconfig-checker -exclude \\.yml$",
-    "start:action": "npm run prepublish && node dist/index.js",
+    "start:action": "npm run prepare && node dist/index.js",
     "lint": "eslint --cache --fix --quiet --format codeframe --ext js .",
     "lint:staged": "lint-staged --no-stash --allow-empty",
     "semantic-release": "semantic-release",
@@ -20,7 +20,7 @@
     "test": "TZ=utc jest",
     "test:coverage": "jest --collectCoverage",
     "test:watch": "jest --watch",
-    "all": "npm run format && npm run lint && npm run prepublish"
+    "all": "npm run format && npm run lint && npm run prepare"
   },
   "dependencies": {
     "@actions/core": "^1.2.6",
