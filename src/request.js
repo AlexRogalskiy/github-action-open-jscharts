@@ -1,6 +1,6 @@
 'use strict';
 
-const fetch = require('unfetch');
+const fetch = require('isomorphic-unfetch');
 
 const fetchJSON = async (url, options) => {
   const data = await fetch(url, options);

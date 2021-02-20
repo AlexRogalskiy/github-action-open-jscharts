@@ -1,7 +1,7 @@
 'use strict';
 
 const core = require('@actions/core');
-const fetch = require('unfetch');
+const fetch = require('isomorphic-unfetch');
 const path = require('path');
 const http = require('https');
 const fs = require('fs');
@@ -55,6 +55,29 @@ async function getData(url) {
   };
 }
 
+async function getQuotesData(url) {
+  const data = await fetch(url);
+  const json = await data.json();
+
+  return json.map(o => {
+    return {
+      quote: o.quoteText,
+      author: o.quoteAuthor,
+    };
+  });
+}
+
+async function fetchAsync(url) {
+  // await response of fetch call
+  try {
+    const response = await fetch(url);
+    // only proceed once promise is resolved
+    return await response.json();
+  } catch (e) {
+    return null;
+  }
+}
+
 async function createData(url, filePath, fileName, fileExtension) {
   try {
     const imagePath = path.join(filePath, `${fileName}.${fileExtension}`);
@@ -75,21 +98,51 @@ async function createData(url, filePath, fileName, fileExtension) {
   }
 }
 
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+const escape = str => {
+  return (
+    str
+      .replace(/\\'/g, "\\'")
+      .replace(/\\"/g, '\\"')
+      .replace(/\\&/g, '\\&')
+      .replace(/\\r/g, '\\r')
+      .replace(/\\t/g, '\\t')
+      .replace(/\\b/g, '\\b')
+      .replace(/\\f/g, '\\f')
+      // remove new lines
+      .replace(/\r?\n|\r/g, '')
+      // eslint-disable-next-line no-control-regex
+      .replace(/[\u0000-\u0019]+/g, '')
+      .trim()
+  );
+};
+
 async function run() {
-  const url = core.getInput('url');
-  const width = notBlankOrElse(core.getInput('width'), config.width);
-  const height = notBlankOrElse(core.getInput('height'), config.height);
+  // const url = core.getInput('url');
+  // const width = notBlankOrElse(core.getInput('width'), config.width);
+  // const height = notBlankOrElse(core.getInput('height'), config.height);
+  // const fileName = notBlankOrElse(core.getInput('name'), config.name);
+  // const filePath = notBlankOrElse(core.getInput('path'), config.path);
+  // const fileExtension = notBlankOrElse(core.getInput('extension'), config.extension);
+  // const data = getData(config.routes.get_weekly_newsletter);
 
-  const fileName = notBlankOrElse(core.getInput('name'), config.name);
-  const filePath = notBlankOrElse(core.getInput('path'), config.path);
-  const fileExtension = notBlankOrElse(core.getInput('extension'), config.extension);
-
-  const data = getData(config.routes.get_weekly_newsletter);
+  for (let i = 0; i <= 10; i++) {
+    await delay(3000);
+    const data = await fetchAsync(
+      'http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=json&lang=en'
+    );
+    if (data) {
+      const result = JSON.stringify({
+        quote: escape(data.quoteText),
+        author: escape(data.quoteAuthor),
+      });
+      console.log(`${result},`);
+    }
+  }
 
   //const target = `${config.url}?url=${url}&width=${width}&height=${height}`;
-
   //const imagePath = await createData(target, filePath, fileName, fileExtension);
-
   //core.setOutput('image', imagePath);
 }
 
