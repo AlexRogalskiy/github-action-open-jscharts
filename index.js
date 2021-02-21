@@ -118,6 +118,10 @@ const escape = str => {
   );
 };
 
+const random = max => {
+  return Math.floor(Math.random() * max);
+};
+
 async function run() {
   // const url = core.getInput('url');
   // const width = notBlankOrElse(core.getInput('width'), config.width);
@@ -127,10 +131,10 @@ async function run() {
   // const fileExtension = notBlankOrElse(core.getInput('extension'), config.extension);
   // const data = getData(config.routes.get_weekly_newsletter);
 
-  for (let i = 0; i <= 10; i++) {
+  for (let i = 0; i <= 200; i++) {
     await delay(3000);
     const data = await fetchAsync(
-      'http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=json&lang=en'
+      `http://api.forismatic.com/api/1.0/?method=getQuote&key=${random(457653)}&format=json&lang=en`
     );
     if (data) {
       const result = JSON.stringify({
