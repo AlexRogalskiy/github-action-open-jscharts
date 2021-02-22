@@ -67,6 +67,8 @@ async function getQuotesData(url) {
   });
 }
 
+require('https').globalAgent.options.rejectUnauthorized = false;
+
 async function fetchAsync(url) {
   // await response of fetch call
   try {
@@ -74,6 +76,7 @@ async function fetchAsync(url) {
     // only proceed once promise is resolved
     return await response.json();
   } catch (e) {
+    console.error(e);
     return null;
   }
 }
@@ -131,15 +134,14 @@ async function run() {
   // const fileExtension = notBlankOrElse(core.getInput('extension'), config.extension);
   // const data = getData(config.routes.get_weekly_newsletter);
 
-  for (let i = 0; i <= 200; i++) {
+  for (let i = 0; i <= 100; i++) {
     await delay(3000);
-    const data = await fetchAsync(
-      `http://api.forismatic.com/api/1.0/?method=getQuote&key=${random(457653)}&format=json&lang=en`
-    );
+    const data = await fetchAsync('https://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote');
     if (data) {
+      const index = data.content.lastIndexOf('— ');
       const result = JSON.stringify({
-        quote: escape(data.quoteText),
-        author: escape(data.quoteAuthor),
+        quote: escape(data.content.substring(0, index)),
+        author: escape(data.content.substring(index + 1)),
       });
       console.log(`${result},`);
     }

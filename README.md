@@ -21,6 +21,7 @@
 ![GitHub search hit counter](https://img.shields.io/github/search/AlexRogalskiy/github-action-open-jscharts/goto)
 ![GitHub Repository branches](https://badgen.net/github/branches/AlexRogalskiy/github-action-open-jscharts)
 ![GitHub Repository dependents](https://badgen.net/github/dependents-repo/AlexRogalskiy/github-action-open-jscharts)
+
 [![Renovatebot](https://badgen.net/badge/renovate/enabled/green?cache=300)](https://renovatebot.com/)
 [![Dependabot](https://img.shields.io/badge/dependabot-enabled-1f8ceb.svg?style=flat-square)](https://dependabot.com/)
 [![NewReleases](https://newreleases.io/badge.svg)](https://newreleases.io/github/AlexRogalskiy/github-action-open-jscharts)
