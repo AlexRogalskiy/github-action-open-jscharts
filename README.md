@@ -2,7 +2,7 @@
 
 > GitHub Action to generate open JS-charts
 
-[![GitHub marketplace](https://img.shields.io/badge/marketplacegithub-graph--open-jscharts-blue?logo=github)](https://github.com/marketplace/actions/graph-open-jscharts)
+[![GitHub marketplace](https://img.shields.io/badge/marketplacegithub--open-jscharts-blue?logo=github)](https://github.com/marketplace/actions/graph-open-jscharts)
 
 [![management: perfekt👌](https://img.shields.io/badge/management-perfekt👌-red.svg)](https://github.com/lekterable/perfekt)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
