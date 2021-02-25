@@ -1,5 +1,7 @@
 'use strict';
 
+const WikiquoteApi = require('@divyanshu1610/wiki-quotes');
+
 const core = require('@actions/core');
 const fetch = require('isomorphic-unfetch');
 const path = require('path');
@@ -135,16 +137,27 @@ async function run() {
   // const data = getData(config.routes.get_weekly_newsletter);
 
   for (let i = 0; i <= 100; i++) {
-    await delay(3000);
-    const data = await fetchAsync('https://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote');
-    if (data) {
-      const index = data.content.lastIndexOf('— ');
+    await delay(1000);
+    try {
+      const data = await WikiquoteApi.getRandomQuote();
       const result = JSON.stringify({
-        quote: escape(data.content.substring(0, index)),
-        author: escape(data.content.substring(index + 1)),
+        quote: escape(data.quote),
+        author: escape(data.title),
       });
       console.log(`${result},`);
+    } catch (e) {
+      // empty
     }
+
+    // const data = await fetchAsync('https://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote');
+    // if (data) {
+    //   const index = data.content.lastIndexOf('— ');
+    //   const result = JSON.stringify({
+    //     quote: escape(data.content.substring(0, index)),
+    //     author: escape(data.content.substring(index + 1)),
+    //   });
+    //   console.log(`${result},`);
+    // }
   }
 
   //const target = `${config.url}?url=${url}&width=${width}&height=${height}`;
