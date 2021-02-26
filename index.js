@@ -136,7 +136,7 @@ async function run() {
   // const fileExtension = notBlankOrElse(core.getInput('extension'), config.extension);
   // const data = getData(config.routes.get_weekly_newsletter);
 
-  for (let i = 0; i <= 100; i++) {
+  for (let i = 0; i <= 300; i++) {
     await delay(1000);
     try {
       const data = await WikiquoteApi.getRandomQuote();
