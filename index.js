@@ -1,6 +1,6 @@
 'use strict';
 
-const WikiquoteApi = require('@divyanshu1610/wiki-quotes');
+// const iquotes = require('iquotes');
 
 const core = require('@actions/core');
 const fetch = require('isomorphic-unfetch');
@@ -139,7 +139,7 @@ async function run() {
   for (let i = 0; i <= 300; i++) {
     await delay(1000);
     try {
-      const data = await WikiquoteApi.getRandomQuote();
+      const data = []; // await iquotes.random();
       const result = JSON.stringify({
         quote: escape(data.quote),
         author: escape(data.title),
