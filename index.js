@@ -1,6 +1,6 @@
 'use strict';
 
-// const iquotes = require('iquotes');
+const quotzzy = require('famous-quotes');
 
 const core = require('@actions/core');
 const fetch = require('isomorphic-unfetch');
@@ -136,13 +136,14 @@ async function run() {
   // const fileExtension = notBlankOrElse(core.getInput('extension'), config.extension);
   // const data = getData(config.routes.get_weekly_newsletter);
 
-  for (let i = 0; i <= 300; i++) {
+  for (let i = 0; i <= 100; i++) {
     await delay(1000);
     try {
-      const data = []; // await iquotes.random();
+      const data = await fetchAsync('https://favqs.com/api/qotd');
+
       const result = JSON.stringify({
-        quote: escape(data.quote),
-        author: escape(data.title),
+        quote: escape(data.quote.body),
+        author: escape(data.quote.author),
       });
       console.log(`${result},`);
     } catch (e) {
