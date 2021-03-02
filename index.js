@@ -1,6 +1,6 @@
 'use strict';
 
-const quote = require('find-quote');
+const getQuote = require('forbes-quote');
 
 const core = require('@actions/core');
 const fetch = require('isomorphic-unfetch');
@@ -136,17 +136,20 @@ async function run() {
   // const fileExtension = notBlankOrElse(core.getInput('extension'), config.extension);
   // const data = getData(config.routes.get_weekly_newsletter);
 
-  for (let i = 0; i <= 300; i++) {
+  for (let i = 0; i < 1; i++) {
     //await delay(1000);
     try {
-      const data = await fetchAsync('http://quotes.stormconsultancy.co.uk/random.json');
+      const data = await fetchAsync('https://www.forbes.com/forbesapi/thought/uri.json?enrich=true&query=1');
 
-      const result = JSON.stringify({
-        quote: escape(data.quote),
-        author: escape(data.author),
-      });
+      console.log(data);
+      for (const item in data) {
+        const result = JSON.stringify({
+          quote: escape(item.thought.quote),
+          author: escape(item.thought.thoughtAuthor.name),
+        });
 
-      console.log(`${result},`);
+        console.log(`${result},`);
+      }
     } catch (e) {
       // empty
     }
