@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@actions/core": "^1.2.6",
-    "isomorphic-unfetch": "^3.1.0",
+    "isomorphic-unfetch": "^4.0.2",
     "lodash.clonedeep": "^4.5.0",
     "lodash.isequal": "^4.5.0",
     "qs": "^6.5.0"
